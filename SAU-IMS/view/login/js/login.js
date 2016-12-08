@@ -4,7 +4,7 @@ function login() {
     var password = document.getElementById("password");
 
     if (userName.value == "" || password.value == "") {
-        document.getElementById("tips").innerHTML = "账号或密码不能为空";
+        document.getElementById("tips").innerHTML = "用户或密码不能为空";
         return;
     }
 
@@ -17,9 +17,13 @@ function login() {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             var json = xmlhttp.responseText;
-            var login = eval("("+json+")");
+            var login=eval("("+json+")");
             if(login.success){
+                
+
                 location.href=login.url;
+
+
             }else{
                 password.value="";
                 document.getElementById("tips").innerHTML=login.message;
@@ -33,12 +37,3 @@ function login() {
 
 document.getElementById("button").onclick=login;
 
-//$("input").keydown(login);
-
-$(document).ready(function(e) {
-  $(this).keydown(function (e){
-    if(e.which == "13") {
-      login();
-    }
-  })
-});

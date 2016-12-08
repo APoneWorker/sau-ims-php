@@ -10,8 +10,20 @@
 
 class GeneralUser extends BaseUser
 {
+    /**
+     * 获得该用户要收到的公告
+     * @return [type] [description]
+     */
+    public function getNotices(){
 
+    }
+    /**
+     * 获得未读的公告
+     * @return [type] [description]
+     */
+    public function getNotReadNotice(){
 
+    }
     public function register($content)
     {
 

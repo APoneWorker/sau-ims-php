@@ -3,89 +3,79 @@
 <head>
 	<meta charset="UTF-8">
 	<title>管理页面</title>
-	<link rel="stylesheet" href="./view/admin/css/common.css">
-</head>
+  <link rel="stylesheet" href="./view/admin/css/common.css">
+  </head>
 <body>
-	<header>
-		<img src="./view/admin/img/logo.png" alt="" class="logo">
-		<h1 class="header rlt">校社联·信息管理系统</h1>
-		<img src="./view/admin/img/无消息.png" alt="没有新信息" class="ring rlt">
-		<img src="./view/admin/img/头像logo.png" alt="用户头像" class="userImg rlt">
-	</header>
-	<section class="threeBars">
-		<div class="Container rlt">
-			<nav class="leftBar fll">
-				<ul class="navigation">
-					<li class="navChecked">
-						<a href="">最新公告</a>
-					</li>
-					<li>
-						<a href="">任务发布</a>
-					</li>
-					<li>
-						<a href="">注册审核</a>
-					</li>
-					<li>
-						<a href="">活动审核</a>
-					</li>
-					<li>
-						<a href="">社团日志</a>
-					</li>
-					<li>
-						<a href="">年度注册</a>
-					</li>
-				</ul>
-			</nav>
-			<div class="middleBar fll">
-				<div class="searchBar">
-					<form action="">
-						<input type="text" id="searchField" placeholder="搜索">
-						<img src="./view/admin/img/搜索logo.png" alt="magnifying mirror" class="magnifyingMirror abs" title="搜索">
-						<img src="./view/admin/img/刷新LOGO.png" alt="refresh" class="refresh abs" title="刷新">
-					</form>
-				</div>
-				<div class="labelBar">
-					<div class="label">公告</div>
-					<img src="./view/admin/img/新建logo.png" alt="" class="new abs" title="新建公告">
-					<img src="./view/admin/img/删除logo.png" alt="" class="delete abs"  title="删除公告">
-				</div>
-				<div class="listContainer">
-					<ul class="announcementList">
-						<li>
-							<div class="content fll">
-								<div class="token fll"></div>
-								<h1 class="sender fll">校社联</h1>
-								<h3 class="announcementTitle fll">校社联管理系统建好啦</h3>
-								<div class="flr rlt checkbox"><input type="checkbox" name="checkbox"></div>
-								<div class="time rlt">2016年10月31日</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="rightBar fll">
-				<header class="mainHeader">
-					<img src="./view/admin/img/头像logo.png" alt="用户头像" class="userHead fll">
-					<h1 class="mainSender fll">校社联</h1>
-					<div class="mainTime fll">2016年10月31日 14:11</div>
-					<a href="" class="deleteButton fll">
-						<img src="./view/admin/img/删除logo.png" alt="删除" class="mainDelete">
-						<span class="deleteText rlt">删除</span>
-					</a>
-				</header>
-				<article class="main">
-					<h3 class="mainTitle">校社联管理系统建好啦</h3>
-					<div class="mainContent">
-						<p>各位社长、成员、同学们：</p>
-						<p>&emsp;&emsp; 你们好！现在我们校社联管理系统已经建好，请各位填好自己的相关信息、并加入各自的社团。谢谢合作！</p>
-					</div>
-				</article>
+  <header>
+    <img src="./view/admin/img/logo.png" alt="" class="logo">
+    <h1 class="header rlt">校社联·信息管理系统</h1>
+    <img src="./view/admin/img/无消息.png" alt="" class="ring rlt">
+		<div id="showSettings">
+			<img src="./view/admin/img/头像logo.png" alt="用户头像" class="userImg rlt flr">
+			<img src="./view/admin/img/下拉logo.png" alt="下拉箭头" class="downArrow rlt flr">
+		</div>
+		<div id="menuContainer" class="flr">
+			<i class="upArrow rlt"></i>
+			<div class="menu rlt">
+				<a href="./view/settings/index.html" class="menuA"><div class="menulist">信息设置</div></a>
+				<a href="" class="menuA"><div class="menulist">帮助</div></a>
+				<a href="" class="menuA"><div class="menulist">关于</div></a>
+				<a href="?c=LoginAdmin& a=logout" class="menuA"><div class="menulist">登出</div></a>
 			</div>
 		</div>
-	</section>
-	<footer>
-		<p id="footer" class="rlt">&copy;2016-广金校社联</p>
-	</footer>
-	<script src="./js/manage.js" charset="utf-8"></script>
+  </header>
+  <section class="threeBars">
+    <div class="Container rlt">
+      <nav class="leftBar fll">
+        <ul class="navigation">
+          <li class="checked">
+            <a href="">公告发布</a>
+          </li>
+          <li>
+            <a href="">任务发布</a>
+          </li>
+          <li>
+            <a href="">注册审核</a>
+          </li>
+          <li>
+            <a href="">活动审核</a>
+          </li>
+          <li>
+            <a href="">社团日志</a>
+          </li>
+          <li>
+            <a href="">年度注册</a>
+          </li>
+        </ul>
+      </nav><!-- leftBar -->
+      <div class="middleBar fll">
+        <div class="searchBar">
+          <input type="text" id="searchField" placeholder="搜索">
+          <img src="./view/admin/img/搜索logo.png" alt="magnifying mirror" class="magnifyingMirror abs" id="searchbtn" title="搜索">
+          <img src="./view/admin/img/刷新LOGO.png" alt="refresh" class="refresh abs" id="refresh" title="刷新">
+        </div>
+        <div class="labelBar">
+          <div class="label">公告</div>
+          <img src="./view/admin/img/新建logo.png" alt="" class="new abs" id="new1" title="新建公告">
+          <img src="./view/admin/img/删除logo.png" alt="" class="delete abs"  title="删除公告" id="deleteimg">
+        </div>
+        <div class="listContainer" id="listContainer">
+          <ul class="announcementList" id="announcementList">
+          </ul>
+        </div>
+      </div><!-- middleBar -->
+      <div class="rightBar fll" id="rightBar">
+      </div><!-- rightBar -->
+    </div>
+  </section>
+  <footer>
+    <p id="footer" class="rlt">&copy;2016-广金校社联</p>
+  </footer>
+	<!-- <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script> -->
+  <script src="./view/admin/js/jquery.min.js"></script>
+  <script src="./view/admin/js/functionsBase.js"></script>
+  <script src="./view/admin/js/functionsOption.js"></script>
+  <script src="./view/admin/js/createLi.js"></script>
+	<script src="./view/admin/js/toggleSettings.js"></script>
 </body>
 </html>

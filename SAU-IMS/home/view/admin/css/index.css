@@ -1,0 +1,135 @@
+
+
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+    width: 100%;
+    height: 1701px;
+    font-size: 62.5%;
+    font-family: Microsoft Yahei;
+    color: rgba(170,170,170,1);
+    overflow-y: auto;
+    overflow-x: auto;
+    margin: 0 0 4px 0;
+    background: rgba(139, 228, 232,1);
+} 
+.container {
+  width:95%;
+  margin: 0 auto;
+}
+.today , .three , .week {
+  width: 100%;
+  margin: 30px auto;
+  padding: 25px 0; 
+  background-color: rgba(255, 255, 255, 1);
+}
+.period{
+  margin-left: 2.5%;
+}
+.dynamicList{
+  width: 95%;
+  height: 200px;
+  margin: 10px auto;
+  list-style: none;
+  position: relative;
+  background: rgba(183,183,183,1);  
+}
+.dynamicImg{
+  width: 17%;
+  height: 80%;
+  float: left;
+  margin: 2.5%;
+}
+.content{
+  width: 60%;
+  float: left;
+  margin: 40px 0 0 15px;
+}
+.title{
+  font-size: 5em;
+  color: rgba( 0, 0, 0,1);
+}
+.text{
+  font-size: 3em;
+  margin-top: 10px;
+  color: rgba(52,52,52,1);
+}
+.infor{
+  width: 16%;
+  float:right;  
+  color: rgba(52,52,52,1);
+}
+.time{
+  font-size: 3em;
+  position: relative;
+  right: -45px;
+  top: 10px;
+}
+.sender{  
+  font-size: 3em;
+  position: relative;
+  right: 5px;
+  bottom: -110px;
+
+}
+hr{
+width: 80%;
+margin: 0 auto;
+}
+
+footer {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  position: fixed;
+  bottom: 0px;
+}
+.option{
+  width: 19.2%;
+  display: inline-block;
+  text-align: center;
+}
+.blo{
+  width: 100%;
+  display: block;
+}
+.des{
+  font-size: 45px;
+}
+.token{
+  width: 80%;
+  height: 25px;
+  margin: 0 auto;
+  position: relative;
+  background-color:rgba(139, 228, 232,1);
+}
+.untoken{
+  width: 80%;
+  height: 25px;
+  margin: 0 auto;
+  position: relative;
+  background-color: inherit;
+}
+
+.inImg {
+  width: 158px;
+  height: 158px;
+}
+.accountImg{
+  width:75px;
+  float: right;
+  margin: 50px 30px 0 0;
+}
+.functionImg{
+  width:75px;
+  float: right;
+  margin: 70px 30px 0 0;
+}
+.clearImg{
+  height:50px;
+  float: right;
+  margin-top: 55px;
+  margin-right: 30px;
+}
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>管理页面</title>
+	<!-- <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script> -->
+    <script src="./view/admin/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./view/admin/js/functionsBase.js"></script>
+    <script type="text/javascript" src="./view/admin/js/functionsOption.js"></script>
+    <script type="text/javascript" src="./view/admin/js/createLi.js"></script>
+
+  <link rel="stylesheet" href="./view/admin/css/common.css">
+  </head>
+
+<body>
+  <header>
+    <img src="./view/admin/img/logo.png" alt="" class="logo">
+    <h1 class="header rlt">校社联·信息管理系统</h1>
+    <img src="./view/admin/img/无消息.png" alt="" class="ring rlt">
+    <img src="./view/admin/img/头像logo.png" alt="" class="userImg rlt">
+  </header>
+  <section class="threeBars">
+    <div class="Container rlt">
+      <nav class="leftBar fll">
+        <ul class="navigation">
+          <li class="checked">
+            <a href="">公告发布</a>
+          </li>
+          <li>
+            <a href="">任务发布</a>
+          </li>
+          <li>
+            <a href="">注册审核</a>
+          </li>
+          <li>
+            <a href="">活动审核</a>
+          </li>
+          <li>
+            <a href="">社团日志</a>
+          </li>
+          <li>
+            <a href="">年度注册</a>
+          </li>
+        </ul>
+      </nav><!-- leftBar -->
+      <div class="middleBar fll">
+        <div class="searchBar">
+          <form action="">
+            <input type="text" id="searchField" placeholder="搜索">
+            <img src="./view/admin/img/搜索logo.png" alt="magnifying mirror" class="magnifyingMirror abs" id="searchbtn" title="搜索">
+            <img src="./view/admin/img/刷新LOGO.png" alt="refresh" class="refresh abs" id="refresh" title="刷新">
+          </form>
+        </div>
+        <div class="labelBar">
+          <div class="label">公告</div>
+          <img src="./view/admin/img/新建logo.png" alt="" class="new abs" id="new1" title="新建公告">
+          <img src="./view/admin/img/删除logo.png" alt="" class="delete abs"  title="删除公告" id="deleteimg">
+        </div>
+        <div class="listContainer" id="listContainer">
+          <ul class="announcementList" id="announcementList">
+          </ul>
+        </div>
+      </div><!-- middleBar -->
+      <div class="rightBar fll" id="rightBar">
+      </div><!-- rightBar -->
+    </div>
+  </section>
+  <footer>
+    <p id="footer" class="rlt">&copy;2016-广金校社联</p>
+  </footer>
+</body>
+</html>

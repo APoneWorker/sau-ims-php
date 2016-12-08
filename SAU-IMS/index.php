@@ -14,6 +14,10 @@
 
 require "urlConfig.php";//加载所需路径变量
 
+//************问题**************
+//为什么不在开头引入所有类
+//*******************************
+
 if (!empty($_GET)) {//index.php后是否有参数,有则运行
 
     if (isset($_GET["c"])) {//获取controller参数
@@ -26,7 +30,9 @@ if (!empty($_GET)) {//index.php后是否有参数,有则运行
         $platform=new $controller();//实例化控制类
 
         if(isset($_GET["a"])){//取特殊应用功能执行，如delete,add等
+            $action = $_GET["a"];
             $platform->$action();
+
         }else{//如没有特殊要求默认运行exec()函数,所有控制类都应有exec()函数
             $platform->exec();
         }
@@ -42,4 +48,3 @@ if (!empty($_GET)) {//index.php后是否有参数,有则运行
     $from = new LoginAdminCtrl();//实例化登陆控制类
     $from->exec();//运行并展示登陆页面
 }
-

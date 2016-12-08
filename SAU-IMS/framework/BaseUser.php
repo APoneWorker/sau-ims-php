@@ -8,7 +8,9 @@
  */
 
 require_once "./framework/Database.php";
-
+//***************问题****************
+//把Database::getInstance()赋给私有变量
+//**************************************
 abstract class BaseUser
 {
     /**
@@ -25,7 +27,11 @@ abstract class BaseUser
      * @var int 组织标识
      */
     private $clubId;
-
+    /**
+     * 若是数据库校社联的id有改动，可以直接改这个值
+     * @var int 校社联id
+     */
+    private $sauId = 1;
     /**
      * 构造函数
      * BaseUser constructor.
@@ -33,7 +39,26 @@ abstract class BaseUser
      */
     public function __construct($userName = "")
     {
+        //已经登陆成功后保存了session文件，所以可以用session给这些属性赋值
+        //但是如果用户禁用cookie就找不到服务器中的session文件
+        //所以还是从数据库中查询出信息给其赋值，
+        //但是每次请求都会新建一个user对象，即每次请求都会先查询一次数据库。。。。。。
+        //不明白为什么形参userName要为空
         $this->userName = $userName;
+
+        
+    }
+    /**
+     * 初始化user
+     * @param $userName string 用户名
+     * 
+     */
+    public function init($userName){
+        $this->userName = $userName;
+        $userinfo = $this->getUserIdentify($userName);
+        $this->id = $userinfo['id'];
+        $this->clubId = $userinfo['club_id'];
+        
     }
 
     /**
@@ -192,6 +217,88 @@ abstract class BaseUser
         return $stmt->fetch(PDO::FETCH_ASSOC)['username'];
     }
 
+    
+   
+ 
+    /**
+     * 将公告未读的状态设为已读
+     * 根据用户id和公告id修改该用户公告的已读未读状态
+     *
+     * @param int $nid 公告id
+     * @return bool true：修改成功；flase：修改失败
+     */
+    public function setNoticeRead($nid){
+        $sql = "update `user_notice`  
+                set `read` = 1
+                where `user_id` = ? and `notice_id` = ?";
+        $conn = Database::getInstance();
+        try{
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindParam(1,$this->id);//用户id
+            $stmt -> bindParam(2,$nid);//公告id
+            $stmt -> execute();
+
+            return true;
+        }catch(PDOException $e){
+            echo "出错信息：".$e->getMessage();
+            return false;
+        }
+       
+
+    }
+
+    /**
+     * 删除该用户的公告
+     * 根据用户id和公告id删除该用户的公告
+     * 
+     * @param int[] $nid 公告id数组
+     * @return bool true：删除成功；flase：删除失败
+     */
+    public function deleteUserNotice($nid){
+        $sql = "delete from `user_notice` where `user_id` = ? and notice_id = ?";
+        $conn = Database::getInstance();
+
+        try{
+            $stmt = $conn -> prepare($sql);
+            $stmt -> bindParam(1,$this->id);//用户id 
+            foreach ($nid as $value) {
+               
+                $stmt -> bindParam(2,$nid);//公告id
+                $stmt -> execute();
+            }
+            
+            return true;
+        }catch(PDOException $e){
+            echo "出错信息：".$e->getMessage();
+            return false;
+        }
+    }
+    /**
+     * 根据公告（notice）的id获得公告信息
+     * @param int $nid 公告id 
+     */
+    public function getNoticeById($nid){
+        $sql = "select n.id `id`,`title`,`time`,c.name `name`,`text`
+                from `notice` n
+                join `clubinfo` c on n.club_id = c.club_id
+                where n.id = ? ";
+        $conn = Database::getInstance();
+
+        try{
+            $stmt = $conn -> prepare($sql);  
+            $stmt -> bindParam(1,$nid,PDO::PARAM_INT);//公告id
+            $stmt -> execute();
+            
+            
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            echo "出错信息：".$e->getMessage();
+            return false;
+        }
+    }
+    
+    
+
     /**
      * 注册
      * @param $content array 用户注册信息
@@ -274,6 +381,14 @@ abstract class BaseUser
     public function getClubId()
     {
         return $this->clubId;
+    }
+
+     /**
+     * 获得校社联的id
+     * @return int 校社联id
+     */
+    public function getSauId(){
+        return $sauId;
     }
 }
 
