@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>管理页面</title>
+	<link rel="stylesheet" href="./view/settings/css/common.css">
+</head>
+<body>
+	<header>
+		<a href="?c=AdminMain">
+			<img src="./view/settings/img/logo.png" alt="" class="logo">
+			<h1 class="header rlt">校社联·信息管理系统</h1>
+		</a>
+		<img src="./view/settings/img/无消息.png" alt="没有新信息" class="ring rlt flr">
+		<div id="showSettings">
+			<img src="./view/settings/img/头像logo.png" alt="用户头像" class="userImg rlt flr">
+			<img src="./view/settings/img/下拉logo.png" alt="下拉箭头" class="downArrow rlt flr">
+		</div>
+		<div id="menuContainer" class="flr">
+			<i class="upArrow rlt"></i>
+			<div class="menu rlt">
+				<a href="?c=AdminSetting" class="menuA"><div class="menulist">信息设置</div></a>
+				<a href="" class="menuA"><div class="menulist">帮助</div></a>
+				<a href="" class="menuA"><div class="menulist">关于</div></a>
+				<a href="?c=LoginAdmin&a=logout" class="menuA"><div class="menulist">登出</div></a>
+			</div>
+		</div>
+	</header>
+	<section class="threeBars">
+		<div class="Container rlt">
+			<nav class="leftBar fll">
+				<ul class="navigation">
+					<a href=""><li id="navChecked">信息设置</li></a>
+					<a href=""><li>帮助</li></a>
+					<a href=""><li>关于</li></a>
+				</ul>
+			</nav>
+			<section class="rightPart fll">
+				<div class="content">
+						<img src="./view/settings/img/头像logo.png" alt="" class="headImg rlt">
+						<input type="file" class="rlt"><br>
+						<span class="tips rlt">你可以选择png/jpg图片作为头像</span>
+					<ul class="info">
+						<li>
+							<span class="label rlt">账户</span>
+							<input type="text" class="rlt"><br>
+							<span class="tips rlt">你需要使用此账户名来进行登录，请务必记住它</span>
+						</li>
+						<li>
+							<span class="label rlt">名字</span>
+							<input type="text" class="rlt"><br>
+							<span class="tips rlt">你发布的公告或任务将此名字来署名</span>
+						</li>
+						<li>
+							<span class="label rlt">邮箱</span>
+							<input type="text" class="rlt">
+							<a href="" class="eMail rlt">修改邮箱</a><br>
+							<span class="tips rlt">当你忘记密码或想要密码时，需要通过此邮箱进行验证</span>
+						</li>
+						<li>
+							<span class="label rlt">密码</span>
+							<a href="" class="pw rlt">修改密码</a>
+						</li>
+					</ul>
+					<input type="button" name="name" value="保存">
+				</div>
+			</section>
+		</div>
+	</section>
+	<footer>
+		<p id="footer" class="rlt">&copy;2016-广金校社联</p>
+	</footer>
+	<!-- <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script> -->
+	<script src="./view/settings/js/jquery.min.js"></script>
+	<script src="./view/settings/js/toggleSettings.js" charset="utf-8"></script>
+</body>
+</html>

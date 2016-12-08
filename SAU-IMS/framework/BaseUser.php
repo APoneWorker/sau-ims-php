@@ -7,7 +7,7 @@
  * Time: 12:15
  */
 
-require_once "./framework/Database.php";
+defined("APP") or die("error");
 
 abstract class BaseUser
 {
@@ -25,7 +25,11 @@ abstract class BaseUser
      * @var int 组织标识
      */
     private $clubId;
-
+    /**
+     * 若是数据库校社联的id有改动，可以直接改这个值
+     * @var int 校社联id
+     */
+    private $sauId = 1;
     /**
      * 构造函数
      * BaseUser constructor.
@@ -33,14 +37,15 @@ abstract class BaseUser
      */
     public function __construct($userName = "")
     {
+        //不明白为什么形参userName要为空
         $this->userName = $userName;
+        $this->getIdentify();//识别用户，无论是否调用checkAccount方法或该用户是否存在
     }
 
     /**
      *获取用户标识，包括用户id,以及用户所在的组织
-     * @return int 权限
      */
-    public function getIdentify()
+    private function getIdentify()
     {
         $sql = "select `id`,`club_id` from `user` where `username`=?";
         $conn = Database::getInstance();//获取接口
@@ -48,8 +53,9 @@ abstract class BaseUser
 
         $stmt->bindParam(1, $this->userName);//绑定参数
         $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $info = $stmt->fetch(PDO::FETCH_ASSOC);//获取用户信息
+        $this->id = isset($info["id"]) ? $info["id"] : 0;
+        $this->clubId = isset($info["club_id"]) ? $info["club_id"] : 0;
     }
 
     /**
@@ -148,7 +154,7 @@ abstract class BaseUser
      */
     public function getEmail()
     {
-        $sql = "select `email` from `userInfo` where `username`=?";
+        $sql = "select `email` from `user` where `username`=?";
         $conn = Database::getInstance();
         $stmt = $conn->prepare($sql);
 
@@ -192,37 +198,38 @@ abstract class BaseUser
         return $stmt->fetch(PDO::FETCH_ASSOC)['username'];
     }
 
-    /**
-     * 注册
-     * @param $content array 用户注册信息
-     * @return bool 是否注册成功
-     */
-    abstract public function register($content);
 
-    /**
-     * 显示信息
-     * @param $usreName string 用户名
-     * @return mixed 用户信息
-     */
-    abstract public function showInfo($usreName);
 
-    /**
-     * 编辑信息
-     * @param $userName string 用户名
-     * @param $content array or string 内容
-     * @return bool 是否修改成功
+     /**
+     * 获得用户的头像名字等信息
+     *
+     * *****账号|用户名***问题*****
+     * 不用用户的名字登陆
+     * ****************************
+     *
      */
-    abstract public function editInfo($userName, $content);
+    public function getUserInfo(){
+        $sql = "select head_img `headImgName`, `name` from `userinfo` where user_id = ?";
+        $conn = Database::getInstance();
 
-    /**
-     * 获取类名
-     * @return mixed 类名
-     */
-    public function getName()
-    {
-        return "BaseUser";
+
+        $stmt = $conn -> prepare($sql);
+        $stmt -> bindParam(1,$this->id);//用户id
+        $stmt -> execute();
+
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+
     }
 
+     /**
+     * 获得校社联的id
+     * @return int 校社联id
+     */
+    public function getSauId(){
+        return $this->sauId;
+    }
     /**
      * 设置用户名
      * @param $userName string 用户名
@@ -238,7 +245,7 @@ abstract class BaseUser
      */
     public function getUserName()
     {
-        return $this->userName;
+        return isset($this->userName) ? $this->userName : "";
     }
 
     /**
@@ -251,12 +258,12 @@ abstract class BaseUser
     }
 
     /**
-     * 获取用户id
+     * 获取用户id(默认0)
      * @return int
      */
     public function getId()
     {
-        return $this->id;
+        return isset($this->id) ? $this->id : 0;
     }
 
     /**
@@ -265,7 +272,7 @@ abstract class BaseUser
      */
     public function setClubId($clubId)
     {
-        $this->clubId=$clubId;
+        $this->clubId = $clubId;
     }
 
     /**获取用户组织标识
@@ -273,7 +280,11 @@ abstract class BaseUser
      */
     public function getClubId()
     {
-        return $this->clubId;
+        return isset($this->clubId) ? $this->clubId : 0;
+    }
+
+    public function getRight(){
+        return static::getUserIdentify($this->getUserName());
     }
 }
 

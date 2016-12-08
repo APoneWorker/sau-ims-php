@@ -1,0 +1,72 @@
+@charset "utf-8";
+/*
+ *先把整体布局的样式写出来，再调整登录框的样式
+*/
+
+.rlt {/*这个属性要经常用，直接引用类以减少冗余代码*/
+	position: relative;
+}
+
+/*整体页面初始化*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	max-height: 930px;
+	min-width: 1280px;
+	width: 100%;
+	font-size: 62.5%;
+	font-family: Microsoft Yahei;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/*页眉部分*/
+
+.frameHeader {
+	height: 80px;
+	background-color: rgba(255, 255, 255, 1);
+  display: block;
+}
+
+.logo {
+	left: 200px;
+	top: 10px;
+	width: 60px;
+	height: 60px;
+}
+
+.headerTitle {
+	top: -55%;
+	left: 270px;
+	font-size: 3em;
+	font-weight: lighter;
+	color: rgba(102,102,102,1);
+}
+
+/*主体部分*/
+
+.frameSection {
+	height: 746px;
+	background-image: url(../img/background.png);
+}
+
+/*页脚部分*/
+
+.frameFooter{
+	height: 100px;
+	text-align: center;
+	background-color: rgba(170,170,170,1);
+}
+
+.copyright {
+	top: 40%;
+	font-size: 2em;
+}
+
+/*
+ *以上为整体布局的样式
+*/

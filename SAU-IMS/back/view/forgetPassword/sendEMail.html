@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./view/forgetPassword/css/frame.css" media="screen" title="no title">
+  <link rel="stylesheet" href="./view/forgetPassword/css/forgetPassword.css">
+  <title>忘记密码</title>
+</head>
+<body>
+  <header class="frameHeader">
+    <img src="./view/forgetPassword/img/logo.png" alt="" class="logo rlt">
+    <h1 class="headerTitle rlt">校社联·信息管理系统</h1>
+  </header>
+  <section class="frameSection">
+    <div class="whiteBackGround rlt">
+      <div class="container">
+        <label class="findPassword rlt">忘记密码</label><br>
+        <span class="tips rlt" id="tips">请输入账号</span>
+        <form action="" class="rlt" method="post">
+          <input type="text" id="user" class="rlt" placeholder="账号|用户名" name="userName" autocomplete="off">
+          <input style="display:none"><!--一定要加，当只有一个test时,回车键会提交表单-->
+          <input type="button" id="button" class="rlt" value="邮箱验证">
+        </form>
+      </div>
+    </div>
+  </section>
+  <footer class="frameFooter">
+    <p class="copyright rlt">&copy;2016-广金校社联</p>
+  </footer>
+  <script src="./view/forgetPassword/js/forget.js"></script>
+</body>
+</html>

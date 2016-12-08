@@ -1,0 +1,502 @@
+@charset "utf-8";
+
+/*卧槽不写编码注释就会乱码，只要写了编码都不会乱码*/
+
+/*
+ *先把整体布局的样式写出来，再调整登录框的样式
+*/
+
+.abs {
+	position: absolute;
+}
+.rlt {
+
+	/*这个属性要经常用，直接引用类以减少冗余代码*/
+	position: relative;
+}
+.fll {
+	float: left;
+}
+.flr {
+	float: right;
+}
+
+/*整体页面初始化*/
+* {
+	margin: 0;
+	padding: 0;
+}
+html {
+	max-height: 930px;
+	min-width: 1280px;
+	width: 100%;
+	font-size: 62.5%;
+	font-family: Microsoft Yahei;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*页眉部分*/
+header {
+	height: 80px;
+	background-color: rgba(255, 255, 255, 1);
+	display: block;
+}
+.logo {
+	margin-left: 180px;
+	margin-top: 10px;
+	width: 60px;
+	height: 60px;
+}
+.header {
+	display: inline;
+	margin-left: 10px;
+	top: -20px;
+	font-size: 3em;
+	font-weight: lighter;
+	color: rgba(102, 102, 102, 1);
+	width: 300px;
+}
+.ring {
+	top: 25px;
+	right: 300px;
+	float: right;
+}
+.userImg {
+	top: 15px;
+	right: 180px;
+	float: right;
+	border-radius: 30px;
+}
+.userImg:hover {
+	-webkit-box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+	box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+}
+
+/*主体部分*/
+.threeBars {
+	height: 846px;
+	background-image: url(../img/background.png);
+}
+
+/*页脚部分*/
+footer {
+	height: 100px;
+	text-align: center;
+	background-color: rgba(170, 170, 170, 1);
+}
+#footer {
+	top: 40%;
+	font-size: 2em;
+}
+
+/*
+ *以上为整体布局的样式
+*/
+.Container {
+	top: 5%;
+	margin: 0 auto;
+	height: 90%;
+	width: 80%;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+.leftBar {
+	height: 100%;
+	width: 15%;	/*border: 1px solid #aaa;*/
+}
+.navigation {
+	list-style: none;
+	text-align: center;
+	padding-top: 120px;
+	font-size: 2em;
+	color: rgb(102, 102, 102);
+}
+.navigation li {
+	padding: 15px 0;
+	margin: 10px 0;
+}
+
+.navigation li:hover {
+	background-color: rgba(238, 238, 238, 0.8);
+}
+
+.checked {
+	display: block;
+	background-color: #7ecef4;
+}
+.navigation a:link, .navigation a:active, .navigation a:hover, .navigation a:visited {
+	color: rgb(102, 102, 102);
+	text-decoration: none;
+}
+
+/*以上是左边的导航栏样式*/
+.middleBar {
+	height: 100%;
+	width: 30%;
+	background-color: #eee;
+	border: 1px solid #aaa;
+}
+.searchBar {
+	height: 7.3%;
+	border: 1px solid #aaa;
+}
+#searchField {
+	width: 81%;
+	height: 54px;	/*border: none;*/
+	background-color: inherit;
+	border: 1px solid #6cf;
+	font-size: 2em;
+	padding-left: 5px;
+}
+::-webkit-input-placeholder {
+
+	/* WebKit browsers */
+	color: rgba(102, 204, 255, 1);
+	font-family: Microsoft Yahei;
+}
+:-moz-placeholder {
+
+	/* Mozilla Firefox 4 to 18 */
+	color: rgba(102, 204, 255, 1);
+	font-family: Microsoft Yahei;
+}
+::-moz-placeholder {
+
+	/* Mozilla Firefox 19+ */
+	color: rgba(102, 204, 255, 1);
+	font-family: Microsoft Yahei;
+}
+:-ms-input-placeholder {
+
+	/* Internet Explorer 10+ */
+	color: rgba(102, 204, 255, 1);
+	font-family: Microsoft Yahei;
+}
+.magnifyingMirror {
+	cursor: pointer;
+	top: 1.9%;
+	left: 36%;
+}
+.magnifyingMirror:hover{
+	height:32px;
+}
+.refresh {
+	cursor: pointer;
+	top: 1.5%;
+	left: 41.4%;
+}
+.refresh:hover{
+	height:32px;
+}
+
+/*以上是搜索栏的样式*/
+.labelBar {
+	height: 7.3%;	/*border: 1px solid #aaa;*/
+}
+.label {
+	font-size: 2.5em;
+	padding: 7px 0;
+	margin-left: 20px;
+	color: rgba(102, 102, 102, 1);
+}
+.new {
+	cursor: pointer;
+	top: 9%;
+	left: 36%;
+}
+.new:hover{
+	width: 32px;
+	height: 32px;
+}
+.delete {
+	cursor: pointer;
+	top: 9%;
+	left: 41.4%;
+}
+.delete:hover{
+	width: 28px;
+	height: 32px;
+	/* background-color: rgba(204, 228, 240, 1); */
+}
+
+/*以上是公告栏的样式*/
+.listContainer {
+	height: 84.1%;
+	border: 1px solid #aaa;
+	padding-top: 5px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/*::-webkit-scrollbar-track-piece  {
+background-color: #f3f3f3;
+}*/
+
+/*搞不定滚动条啊啊啊*/
+
+.announcementList {
+	list-style: none;
+}
+.content {
+	height: 80px;
+	width: 100%;
+	margin-bottom: 20px;
+	background-color: #fff;	/*border: 1px solid #aaa;*/
+	cursor: pointer;
+}
+.content:hover {
+	background-color: rgba(204, 228, 240, 1);
+}
+.content:active {
+	background-color: rgba(126, 206, 244, 1);
+}
+.announcementList .active{
+	background-color: rgba(126, 206, 244, 1);
+}
+.token {
+	width: 7px;
+	height: 50px;
+	margin: 15px 0;
+	background-color:inherit;
+}
+.untoken {
+	width: 7px;
+	height: 50px;
+	margin: 15px 0;
+	background-color: rgba(126, 206, 244, 1);
+}
+.title {
+	display: inline-block;
+	color: rgba(102, 102, 102, 1);
+	font-weight: 400;
+	font-size: 2.5em;
+	margin-top: 16px;
+	margin-left: 10px;
+}
+.announcementTitle {
+	width: 71%;/*	height: 20px;*/
+	display: inline-block;
+	color: rgba(0, 153, 255, 1);
+	font-weight: 500;
+	font-size: 1.5em;
+	margin-top: 48px;
+	margin-left: -75px;/*	overflow: hidden;
+		text-overflow: ellipsis;*/
+}
+input[type="checkbox"] {
+	height: 15px;
+	width: 15px;
+	margin-top: 25px;	/*margin-right: 20px;*/
+}
+.checkbox {
+	right: 7.5%
+}
+.time {
+
+	/*千万别给这破玩意加浮动，否则它会随着宽度变化飞来飞去*/
+	width: 165px;
+	height: 15px;
+	color: rgba(153, 153, 153, 1);
+	font-size: 1.5em;
+	clear: both;
+	top: -25%;
+	right: -50%;
+}
+
+/*中间这栏终于做完了*/
+.rightBar {
+	width: 54.8%;	/*border: 1px solid #aaa;*/
+}
+.mainHeader {
+	height: 90px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 1);
+}
+.userHead {
+	margin: 16px 0;
+	margin-left: 30px;
+	margin-right: 15px;
+}
+.mainSender {
+	display: inline;
+	font-weight: 400;
+	font-size: 2.5em;
+	color: rgba(102, 102, 102, 1);
+	margin-top: 17px;
+}
+.mainTime {
+	font-size: 1.5em;
+	margin-top: 50px;
+	margin-left: -75px;
+	font-weight: 100;
+}
+.mainHeader a:link, .mainHeader a:active, .mainHeader a:hover, .mainHeader a:visited {
+	color: rgba(126, 206, 244, 1);
+	text-decoration: none;
+	font-size: 2em;
+	margin-top: -60px;
+	margin-left: 83%;
+}
+.deleteText {
+	top: -5px;
+	margin-left:10px;
+}
+.mainDelete:hover{
+	height:32px;
+	width:30px;
+}
+.main {
+	height: 648px;
+	background-color: rgba(242, 242, 242, 1);
+	padding: 25px 45px 0;
+	font-family: "微软雅黑";
+	overflow-y: auto;
+}
+.mainTitle {
+	font-size: 3em;
+	color: rgba(102, 102, 102, 1);
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 25px;
+}
+.mainContent {
+	color: rgba(102, 102, 102, 1);
+	font-size: 2em;
+	font-weight: 100;
+}
+.ti2 {
+	text-indent: 2em;
+}
+
+/*以上是公告部分布局（不包含新建公告）*/
+
+.newAnnouncement {
+	color: rgba(51, 51, 51, 1);
+	font-size: 3em;
+	padding-left: 45px;
+	padding-top: 23px;
+}
+.newTitle {
+	height: 50px;
+	width: 100%;
+	border: solid 2px rgba(153, 153, 153, 1);
+	border-radius: 10px;
+	background-color: inherit;
+	font-size: 2em;
+	margin-bottom: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: -10px;
+}
+.newText{
+	resize: none;
+	width: 100%;
+	height: 480px;
+	border: solid 2px rgba(153, 153, 153, 1);
+	border-radius: 10px;
+	background-color: inherit;
+	font-size: 2em;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: -10px;
+	overflow: auto;
+	white-space: pre-wrap; /* 自动换行操作 */
+}
+.submit{
+	width: 200px;
+	height: 50px;
+	background-color: rgba(50,177,108,1);
+	color: white;
+	font-size: 2em;
+	border-radius: 10px;
+	border: transparent;
+	font-family: Microsoft Yahei;
+	margin-top: 10px;
+	float: right;
+  text-align: center;
+  line-height: 50px;
+  margin-right: -15px;
+}
+
+.submit:hover{
+	background-color: rgba(0,113,48,1);
+}
+
+.submit:active{
+	color: rgba(102,102,102,1);
+	background-color: #fff;
+}
+
+/*以下为个人设置的样式*/
+
+#showSettings {
+	display: inline;
+	cursor: pointer;
+}
+
+.userImg {
+	top: 15px;
+	right: 160px;
+}
+
+.downArrow {
+	top: 35px;
+	right: 80px;
+}
+
+#menuContainer {
+	margin: 20px 0;
+	padding-left: 10px;
+	top: 40px;
+	right: 60px;
+	position: absolute;
+	z-index: 1;
+}
+
+.upArrow {
+	height: 0;
+	width: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 10px solid rgba(255, 255, 255, 0.8);
+	top: 7px;
+	left: 20px;
+	z-index: 2;
+}
+
+.menu {
+	height: 172px;
+	width: 114px;
+	top: 15px;
+	right: 25px;
+	background-color: rgba(255, 255, 255, 0.8);
+	font-size: 1.8em;
+	padding: 20px 0;
+	border: 2px solid rgba(0, 0, 51, 0.34);
+	border-radius: 5px;
+	margin-left: 25px;
+	-webkit-box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+	box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+}
+
+.menulist {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+}
+
+.menulist:hover {
+	background-color: rgba(238, 238, 238, 0.8);
+}
+
+.menuA {
+	color: rgba(102, 102, 102, 1)
+}
+
+.menuA:hover {
+	color: rgba(51, 204, 255, 1);
+}

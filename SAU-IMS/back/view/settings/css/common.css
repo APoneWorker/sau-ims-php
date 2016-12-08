@@ -1,0 +1,298 @@
+@charset "utf-8";
+/*卧槽不写编码注释就会乱码，只要写了编码都不会乱码*/
+/*
+ *先把整体布局的样式写出来，再调整登录框的样式
+*/
+
+.abs {
+	position: absolute;
+}
+
+.rlt{/*这个属性要经常用，直接引用类以减少冗余代码*/
+	position: relative;
+}
+
+.fll {
+	float: left;
+}
+
+.flr {
+	float: right;
+}
+
+/*整体页面初始化*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	max-height: 930px;
+	min-width: 1280px;
+	width: 100%;
+	font-size: 62.5%;
+	font-family: Microsoft Yahei;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+a {
+	text-decoration: none;
+}
+/*页眉部分*/
+
+header{
+	height: 80px;
+	background-color: rgba(255, 255, 255, 1);
+	display: block;
+}
+
+.logo {
+	margin-left: 180px;
+	margin-top: 10px;
+	width: 60px;
+	height: 60px;
+}
+
+.header{
+	display: inline;
+	margin-left: 10px;
+	top: -20px;
+	font-size: 3em;
+	font-weight: lighter;
+	color: rgba(102, 102, 102, 1);
+	width: 300px;
+}
+
+.ring {
+	top: 25px;
+	right: 300px;
+}
+
+#showSettings {
+	display: inline;
+	cursor: pointer;
+}
+
+.userImg {
+	top: 15px;
+	right: 160px;
+	border-radius: 30px;
+}
+
+.userImg:hover {
+	-webkit-box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+	box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+}
+
+.downArrow {
+	top: 35px;
+	right: 80px;
+}
+
+#menuContainer {
+	margin: 20px 0;
+	padding-left: 10px;
+	top: 40px;
+	right: 60px;
+	position: absolute;
+	z-index: 1;
+}
+
+.upArrow {
+	height: 0;
+	width: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 10px solid rgba(255, 255, 255, 0.8);
+	top: 7px;
+	left: 20px;
+	z-index: 2;
+}
+
+.menu {
+	height: 172px;
+	width: 114px;
+	top: 15px;
+	right: 25px;
+	background-color: rgba(255, 255, 255, 0.8);
+	font-size: 1.8em;
+	padding: 20px 0;
+	border: 2px solid rgba(0, 0, 51, 0.34);
+	border-radius: 5px;
+	margin-left: 25px;
+	-webkit-box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+	box-shadow: 0px 3px 2.68px 0.82px rgba(0, 0, 51, 0.44);
+}
+
+.menulist {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+}
+
+.menulist:hover {
+	background-color: rgba(238, 238, 238, 0.8);
+}
+
+.menuA {
+	color: rgba(102, 102, 102, 1)
+}
+
+.menuA:hover {
+	color: rgba(51, 204, 255, 1);
+}
+
+/*主体部分*/
+
+.threeBars{
+	height: 846px;
+	background-image: url(../img/background.png);
+}
+
+/*页脚部分*/
+
+footer{
+	height: 100px;
+	text-align: center;
+	background-color: rgba(170,170,170,1);
+}
+
+#footer{
+	top: 40%;
+	font-size: 2em;
+}
+
+/*
+ *以上为整体布局的样式
+*/
+
+.Container {
+	top: 5%;
+	margin: 0 auto;
+	height: 90%;
+	width: 90%;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+ .leftBar {
+ 	height: 100%;
+	width: 15%;
+	border-right: 1px solid #aaa;
+}
+
+.navigation {
+	list-style: none;
+	text-align: center;
+	padding-top: 120px;
+	font-size: 2em;
+	color: rgba(102, 102, 102, 1);
+}
+
+.navigation li {
+	padding: 20px 0;
+}
+
+.navigation li:hover {
+	background-color: rgba(195, 220, 233, 1);
+}
+
+#navChecked {
+	display: block;
+	background-color: rgba(102, 204, 255, 1);;
+}
+
+.navigation a:link,
+.navigation a:active,
+.navigation a:hover,
+.navigation a:visited {
+	color: rgb(102, 102, 102);
+	text-decoration: none;
+}
+
+/*以上是左边的导航栏样式*/
+
+.rightPart {
+	height: 100%;
+	width: 84.9%;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+.content {
+	margin: 0 auto;
+	padding-top: 60px;
+	padding-left: 150px;
+	width: 500px;
+	height: 100%;
+	/*background-color: #acb;*/
+}
+
+.headImg {
+	top: 25px;
+}
+
+[type="file"] {
+	left: 20px;
+}
+
+.tips {
+	left: 80px;
+	color: rgba(102, 102, 102, 1);
+	font-size: 1.7em;
+}
+
+.info {
+	list-style: none;
+	padding: 50px 0;
+}
+
+li {
+	margin: 10px 0;
+}
+
+.label {
+	left: 10px;
+	font-size: 2.3em;
+	color: rgba(102, 102, 102, 1);
+}
+
+[type="text"] {
+	left: 30px;
+	height: 33px;
+	width: 248px;
+	font-size: 2em;
+}
+
+.eMail {
+	left: 35px;
+	color: rgba(0, 183, 238, 1);
+	font-size: 2em;
+}
+
+.pw {
+	left: 30px;
+	color: rgba(0, 183, 238, 1);
+	font-size: 2em;
+}
+
+[type="button"] {
+	top: 20px;
+	width: 300px;
+	height: 50px;
+	background-color: rgba(50,177,108,1);
+	color: white;
+	font-size: 2em;
+	border-radius: 10px;
+	border: transparent;
+	font-family: Microsoft Yahei;
+}
+
+[type="button"]:hover{
+	background-color: rgba(0,113,48,1);
+}
+
+[type="button"]:active{
+	color: rgba(102,102,102,1);
+	background-color: #fff;
+}

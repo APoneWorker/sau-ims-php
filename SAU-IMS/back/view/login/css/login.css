@@ -1,0 +1,96 @@
+@charset "utf-8";
+
+.formContainer {
+	left: 60.26%;
+	top: 17%;
+	height: 450px;
+	width: 355px;
+	padding-left: 50px;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,0.7);
+}
+
+.login{
+	top: 25px;
+	font-size: 3em;
+	color: rgba(51,51,51,1);
+}
+
+.tips {
+	top: 40px;
+	font-size: 1.5em;
+	color: #f00;
+}
+
+form{
+	top: 50px;
+}
+
+[type="text"]{/*不用id了，直接用属性选择器，把id的作用留给js*/
+	top: 15px;
+	width: 224px;
+	height: 60px;
+	padding-left: 76px;
+	font-size: 1.8em;
+	background: url(../img/账号.png) no-repeat left center;
+	border: solid 2px #858b98;
+}
+
+[type="password"]{/*此处不适用top，因为计算top是从上个输入框的中部开始计算的*/
+	margin-top: 30px;
+	width: 224px;
+	height: 60px;
+	padding-left: 76px;
+	font-size: 1.8em;
+	background: url(../img/密码.png)  no-repeat left center;
+	border: solid 2px #858b98;
+}
+
+.row{
+	top: 30px;
+}
+
+[type="checkbox"]{
+	height: 25px;
+	width: 25px;
+	border: 1px solid #000;
+}
+
+.remember{
+	top: -4px;
+	padding-left: 20px;
+	font-size: 2em;
+}
+
+.forget{
+	float: right;
+	padding-right: 55px;
+	font-size: 2em;
+}
+
+.forget:link,
+.forget:visited{
+	color: rgba(0,51,255,1);
+	text-decoration: none;
+}
+
+[type="button"]{
+	top: 60px;
+	width: 300px;
+	height: 50px;
+	background-color: rgba(50,177,108,1);
+	color: white;
+	font-size: 2em;
+	border-radius: 10px;
+	border: transparent;
+	font-family: Microsoft Yahei;
+}
+
+[type="button"]:hover{
+	background-color: rgba(0,113,48,1);
+}
+
+[type="button"]:active{
+	color: rgba(102,102,102,1);
+	background-color: #fff;
+}

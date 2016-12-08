@@ -6,6 +6,7 @@
  * 单例工厂模式，加入类名即可返回对象，类放在model文件夹
  * Time: 23:52
  */
+defined("APP") or die("error");
 
 class ModelFactory
 {
@@ -16,19 +17,19 @@ class ModelFactory
     private static $classGroup = array();
 
     /**
-     * 获得模型类
+     * 获得模型类(作用不大)
      * @param $name string 类名
      * @return mixed 返回实例
      * @throws ClassNotFoundException 无法找到类异常
      */
     public static function factory($name)
     {
-        $classFile = MODEL_PATH."$name.php";
+        $classFile = MODEL_PATH . "$name.php";
 
-        if (!file_exists($classFile)) {//检测modei文件夹是否存在该类
-            throw new ClassNotFoundException("can't found this class");//无则抛出异常
+        if (file_exists($classFile)) {//检测modei文件夹是否存在该类
+            require_once $classFile;
         } else {
-            include_once "$classFile";
+            throw new ClassNotFoundException("can't found this class");//无则抛出异常
         }
 
         if (!isset(self::$classGroup[$name]) || !(self::$classGroup[$name] instanceof $name)) {//检测是否已存在该类实例或不对货
@@ -48,8 +49,6 @@ class ModelFactory
      */
     public static function adminFactory($userName)
     {
-        require_once FRAME_PATH."BaseUser.php";
-
         $right = BaseUser::getUserIdentify($userName)["right"];//获取权限标识
 
         switch ($right) {//形成不同管理员类
@@ -62,14 +61,6 @@ class ModelFactory
             default:
                 throw new ClassNotFoundException("can't found this class");
                 break;
-        }
-
-        $classFile = MODEL_PATH."$userType.php";
-
-        if (!file_exists($classFile)) {//检测model文件夹是否存在该类
-            throw new ClassNotFoundException("can't found this class");//无则抛出异常
-        } else {
-            require_once "$classFile";
         }
 
         return new $userType($userName);//返回该实例

@@ -7,8 +7,7 @@
  * Date: 2016/11/19
  * Time: 17:20
  */
-
-require_once FRAME_PATH."PHPMailer/PHPMailerAutoload.php";
+defined("APP") or die("error");
 
 class Email
 {
