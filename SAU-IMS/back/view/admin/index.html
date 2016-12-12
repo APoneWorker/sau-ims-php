@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>管理页面</title>
   <link rel="stylesheet" href="./view/admin/css/common.css">
+  <link rel="stylesheet" href="./view/admin/css/index.css">
   </head>
 <body>
   <header>
@@ -13,7 +14,7 @@
     </a>
     <img src="./view/admin/img/无消息.png" alt="" class="ring rlt">
 		<div id="showSettings">
-			<img src="./view/admin/img/头像logo.png" alt="用户头像" class="userImg rlt flr">
+			<img src="<?php echo $porPath;?>" onerror="this.src='./view/admin/img/头像logo.png'" alt="用户头像" class="userImg rlt flr">
 			<img src="./view/admin/img/下拉logo.png" alt="下拉箭头" class="downArrow rlt flr">
 		</div>
 		<div id="menuContainer" class="flr">
@@ -29,24 +30,21 @@
   <section class="threeBars">
     <div class="Container rlt">
       <nav class="leftBar fll">
-        <ul class="navigation">
-          <li>
-            <a href="">最新公告</a>
+        <ul class="navigation" id="navigation">
+          <li class="checked" id="sendNotice">
+            <a href="javascript:;"  >公告发布</a>
           </li>
-          <li class="checked">
-            <a href="">公告发布</a>
+          <li  id="assignment">
+            <a href="javascript:;">任务发布</a>
           </li>
-          <li>
-            <a href="">任务发布</a>
+          <li id="zhuce">
+            <a href="javascript:;">注册审核</a>
           </li>
-          <li>
-            <a href="">注册审核</a>
+          <li id="niandu">
+            <a href="javascript:;">年度审核</a>
           </li>
-          <li>
-            <a href="">年度审核</a>
-          </li>
-          <li>
-            <a href="">社团日志</a>
+          <li id="rizhe">
+            <a href="javascript:;">社团日志</a>
           </li>
         </ul>
       </nav><!-- leftBar -->
@@ -58,8 +56,8 @@
         </div>
         <div class="labelBar">
           <div class="label">公告</div>
-          <img src="./view/admin/img/新建logo.png" alt="" class="new abs" id="new1" title="新建公告">
-          <img src="./view/admin/img/删除logo.png" alt="" class="delete abs"  title="删除公告" id="deleteimg">
+          <img src="./view/admin/img/新建logo.png" alt="" class="new abs" id="new1" title="新建">
+          <img src="./view/admin/img/删除logo.png" alt="" class="delete abs"  title="删除" id="deleteimg">
         </div>
         <div class="listContainer" id="listContainer">
           <ul class="announcementList" id="announcementList">
@@ -79,5 +77,7 @@
   <script src="./view/admin/js/functionsOption.js"></script>
   <script src="./view/admin/js/createLi.js"></script>
 	<script src="./view/admin/js/toggleSettings.js"></script>
+    <script type="text/javascript" src="./view/admin/js/createAssignment.js"></script>
+    <script type="text/javascript" src="./view/admin/js/taskFunction.js"></script>
 </body>
 </html>

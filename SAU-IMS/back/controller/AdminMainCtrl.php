@@ -20,7 +20,7 @@ class AdminMainCtrl
         if (empty($_SESSION["userName"])) {
             header("Location:./index.php");
         }
-        
+
         try {
             $userName = $_SESSION['userName'];
             $this->user = ModelFactory::adminFactory($userName);//识别和创建管理员model类对象
@@ -33,6 +33,8 @@ class AdminMainCtrl
 
     public function exec()//默认功能实现
     {
+        $userName = $this->user->getUserName();
+        $porPath = PORTRAIT_PATH . $userName . Portrait::PNG;
         require_once VIEW_PATH . "admin/index.html";//载入管理界面
     }
 

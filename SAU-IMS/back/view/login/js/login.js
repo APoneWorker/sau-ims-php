@@ -17,6 +17,7 @@ function login() {//登录，post函数
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var json = xmlhttp.responseText;
+      
       var login = eval("(" + json + ")");
       if (login.success) {
         checked();

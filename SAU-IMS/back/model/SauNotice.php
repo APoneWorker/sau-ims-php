@@ -16,16 +16,16 @@ class SauNotice extends BaseNotice
      * name => 该公告的社团名字
      * text => 内容
      *
-     * @param int $limitL 
+     * @param int $limitL
      * @param int $limitR 获得第limitL+1到第limitR行数据,前端实现下拉滚动条即时刷新效果
      * @return array()|bool 公告详细信息
      */
     public function getSendNotices($limitL,$limitR){
-      
+
         $sql = "select n.id `id`,`title`,`time`,c.name `name`,`text`
                 from notice n
                 join clubinfo c on c.club_id = n.club_id
-                where n.club_id = ? 
+                where n.club_id = ?
                 order by `time` desc
                 limit ?,?";
 
@@ -35,17 +35,17 @@ class SauNotice extends BaseNotice
             $stmt ->bindParam(1,$this->getClubId());//社团id    //参数类型默认为string
             $stmt ->bindParam(2,$limitL,PDO::PARAM_INT);//左边界
             $stmt ->bindParam(3,$limitR,PDO::PARAM_INT);//右边界
-           
+
             if(! $stmt -> execute()){
             	return false;//失败返回false
             }
-            
+
             $notices = array();
             while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
                 $notices[] = $row;
             }
             return $notices;//没查询到信息则返回的是空数组
-            
+
         }catch(PDOException $e){
             return false;//sql语句出错
         }
@@ -65,9 +65,9 @@ class SauNotice extends BaseNotice
         $sql2 = "delete from `notice`
                 where id = ?";//删除公告表中的信息
         $conn = Database::getInstance();
-        
+
         try{
-        	
+
             $conn -> beginTransaction();//开始事务处理
             $stmt1 = $conn -> prepare($sql1);
             $stmt2 = $conn -> prepare($sql2);
@@ -84,7 +84,7 @@ class SauNotice extends BaseNotice
 	            	return false;//失败返回false
 	            }
             }
-            $conn -> commit();//提交事务   
+            $conn -> commit();//提交事务
             return true;
         }catch(PDOException $e){
            // echo "出错信息：".$e->getMessage();//测试用
@@ -94,12 +94,12 @@ class SauNotice extends BaseNotice
 
     }
 
-    
+
     /**
      * 向数据库添加公告（不可以设置触发器）
      * 数组索引只能是text，time，title，
      * @param array() $notice 公告信息
-     * 
+     *
      */
     public function addNotice($notice){
         $sql1 = "insert into `notice`(`text`,`time`,`title`,`club_id`) values(?,?,?,?)";//向notice表中插入数据
@@ -120,11 +120,11 @@ class SauNotice extends BaseNotice
             	$conn -> rollBack();//回滚
             	return false;//失败返回false
             }
-             
+
             $nid = $conn -> lastInsertId();//最后一行插入的数据的id，即添加的公告的id
 
             $stmt2 = $conn -> prepare($sql2);
-           
+
             if(!$stmt2 -> execute()){//获得所有用户的id
             	$conn -> rollBack();//回滚
             	return false;//失败返回false
@@ -132,16 +132,16 @@ class SauNotice extends BaseNotice
 
             $stmt3 = $conn -> prepare($sql3);
             while($uid = $stmt2->fetch(PDO::FETCH_ASSOC)['id']){
-                
+
                 $stmt3 -> bindParam(1,$uid);
                 $stmt3 -> bindParam(2,$nid);
-                
+
                 if(!($stmt3 -> execute())){//向user_notice 表中插入数据
             		$conn -> rollBack();//回滚
             		return false;//失败返回false
                 }
             }
-            
+
 
            $conn -> commit();//提交事务
             return $nid;//返回公告id
@@ -155,39 +155,43 @@ class SauNotice extends BaseNotice
     //
     /**
      * 根据搜索内容获得公告
-     * 
-     * 
+     *
+     *
      * @param string $title 搜索内容
-     * @param int $limitL 
+     * @param int $limitL
      * @param int $limitR 获得第limitL+1到第limitR行数据
      * @return array() 公告详细信息
      */
-    public function searchSendNoticesByTitle($title,$limitL,$limitR){//转义。。%等
+    public function searchSendNoticesByTitle($title,$limitL,$limitR){
 
-        $sql = "select n.id `id`,`title`,`time`,c.name `name`,`title`
+        if(empty($title)){
+            return false;
+        }
+        $title = Database::specialChrtoNormalChr($title);//将"%"和"_"转为"/%"和"/_"
+        $sql = "select n.id `id`,`text`,`time`,c.name `name`,`title`
                 from notice n
                 join clubinfo c on c.club_id = n.club_id
-                where n.club_id = ? and `title` like ?
-                order by `time`
+                where n.club_id = ? and `title` like ? escape '/'
+                order by `time` desc
                 limit ?,?";
         $conn = Database::getInstance();
         try{
             $title = "%".$title."%";
-            
+
             $stmt = $conn -> prepare($sql);
             $stmt ->bindParam(1,$this->getClubId());//社团id
             $stmt ->bindParam(2,$title);//搜索内容
             $stmt ->bindParam(3,$limitL,PDO::PARAM_INT);//左边界
             $stmt ->bindParam(4,$limitR,PDO::PARAM_INT);//右边界
             if(! $stmt -> execute() ){//查询失败返回false
-            	return false;
+                return false;
             }
             $notices = array();
             while($row = $stmt -> fetch(PDO::FETCH_ASSOC)){
                 $notices[] = $row;
             }
             return $notices;//没查询到信息则返回的是空数组
-            
+
         }catch(PDOException $e){
            // echo "出错信息：".$e->getMessage();
             return false;

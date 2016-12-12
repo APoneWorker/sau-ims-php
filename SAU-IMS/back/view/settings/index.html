@@ -13,7 +13,7 @@
 		</a>
 		<img src="./view/settings/img/无消息.png" alt="没有新信息" class="ring rlt flr">
 		<div id="showSettings">
-			<img src="./view/settings/img/头像logo.png" alt="用户头像" class="userImg rlt flr">
+			<img src="<?php echo $porPath;?>" onerror="this.src='./view/settings/img/头像logo.png'" alt="用户头像" class="userImg rlt flr">
 			<img src="./view/settings/img/下拉logo.png" alt="下拉箭头" class="downArrow rlt flr">
 		</div>
 		<div id="menuContainer" class="flr">
@@ -37,24 +37,25 @@
 			</nav>
 			<section class="rightPart fll">
 				<div class="content">
-						<img src="./view/settings/img/头像logo.png" alt="" class="headImg rlt">
-						<input type="file" class="rlt"><br>
+          <form action="./index.php?c=AdminSetting" method="post" enctype="multipart/form-data">
+						<img src="<?php echo $porPath;?>" onerror="this.src='./view/settings/img/头像logo.png'" alt="" class="headImg rlt">
+						<input type="file" name="p" class="rlt"><br>
 						<span class="tips rlt">你可以选择png/jpg图片作为头像</span>
 					<ul class="info">
 						<li>
 							<span class="label rlt">账户</span>
-							<input type="text" class="rlt"><br>
+							<input type="text" class="rlt" disabled="disabled" value="<?php echo $userName;?>"><br>
 							<span class="tips rlt">你需要使用此账户名来进行登录，请务必记住它</span>
 						</li>
 						<li>
 							<span class="label rlt">名字</span>
-							<input type="text" class="rlt"><br>
+							<input type="text" class="rlt"  name="name" value="<?php echo $name;?>"><br>
 							<span class="tips rlt">你发布的公告或任务将此名字来署名</span>
 						</li>
 						<li>
 							<span class="label rlt">邮箱</span>
-							<input type="text" class="rlt">
-							<a href="" class="eMail rlt">修改邮箱</a><br>
+							<input type="text" class="rlt" id="email" name="email" disabled="disabled" value="<?php echo $email;?>">
+							<a href="javascript:editEmail();" class="eMail rlt">修改邮箱</a><br>
 							<span class="tips rlt">当你忘记密码或想要密码时，需要通过此邮箱进行验证</span>
 						</li>
 						<li>
@@ -62,7 +63,8 @@
 							<a href="" class="pw rlt">修改密码</a>
 						</li>
 					</ul>
-					<input type="button" name="name" value="保存">
+					<input type="submit" id="submit" name="submit" value="保存">
+          </form>
 				</div>
 			</section>
 		</div>
@@ -70,8 +72,8 @@
 	<footer>
 		<p id="footer" class="rlt">&copy;2016-广金校社联</p>
 	</footer>
-	<!-- <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script> -->
 	<script src="./view/settings/js/jquery.min.js"></script>
+	<script src="./view/settings/js/setting.js"></script>
 	<script src="./view/settings/js/toggleSettings.js" charset="utf-8"></script>
 </body>
 </html>

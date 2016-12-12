@@ -11,6 +11,8 @@
 class GeneralUser extends BaseUser
 {
 
+ 
+
 
     public function register($content)
     {

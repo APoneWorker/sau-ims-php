@@ -110,6 +110,41 @@ abstract class BaseUser
         return $stmt->fetch(PDO::FETCH_ASSOC)['salt'];
     }
 
+    public function editUserBasicInfo($newName,$newEmail)
+    {
+        $sql1 = "update `userinfo` set `name`=? where `username`=?";//更改用户名称
+        $sql2 = "update `user` set `email`=? where `username`=?";//修改用户邮箱
+
+        $conn = Database::getInstance();
+        try {
+            $conn->beginTransaction();//开始事务处理
+            $stmt1 = $conn->prepare($sql1);
+            $stmt2 = $conn->prepare($sql2);
+
+            $stmt1->bindParam(1, $newName);
+            $stmt1->bindParam(2, $this->userName);
+
+            $stmt2->bindParam(1, $newEmail);
+            $stmt2->bindParam(2, $this->userName);
+
+            if (!$stmt1->execute()) {
+                $conn->rollBack();//回滚
+                return false;//失败返回false
+            }
+
+            if (!$stmt2->execute()) {
+                $conn->rollBack();//回滚
+                return false;//失败返回false
+            }
+
+            $conn->commit();//提交事务
+            return ($stmt1->rowCount() != 0 && $stmt2->rowCount()) != 0 ? true : false;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            return false;
+        }
+    }
+
     /**
      * 修改密码
      * @param $oldPassword string 新密码
@@ -196,6 +231,18 @@ abstract class BaseUser
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC)['username'];
+    }
+
+     public function getName()
+    {
+        $sql = "select `name` from `userinfo` where `username` = ?";
+        $conn = Database::getInstance();
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(1, $this->userName);//用户id
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC)['name'];
     }
 
 

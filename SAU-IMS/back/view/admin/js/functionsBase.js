@@ -76,3 +76,57 @@ function getNowFormatDate() {
       + seperator2 + date.getSeconds();
   return currentdate;
 }
+
+  function escape(str){
+    str=str.replace(/"/g,"&quot;");
+    str=str.replace(/'/g,"&#39;");
+    str=str.replace(/\\/g,"&#92;");
+    return str;
+  }
+
+function searchScroll(search){
+ var boxDom = document.getElementById("listContainer");
+ var boxJq = $("#listContainer");
+  boxJq.scroll(function() {
+      var limitL = document.getElementById("announcementList").childNodes.length;
+      var search = '{"title":"' + valE + '","l":"' + limitL + '","r":"' + (limitL + 10) + '"}';
+      // alert(limit)
+      var scrollTop = boxDom.scrollTop;
+      var max = boxDom.scrollHeight - boxDom.offsetHeight;
+      if (scrollTop >= max) {
+        $.post("./index.php?c=AdminMain&a=searchNotices",{"search": search}, function(data) {
+          eval("data =" + data);
+          if (data.length>0) {
+            for (var i = 0; i < 10; i++) {
+              createList(data[i]['title'], data[i]['time'], data[i]['id']);
+            }
+          }
+          else{
+            createList("没有更多的公告了", "", "");
+            $("#listContainer").unbind('scroll')
+          }
+        });
+      }
+  })
+}
+function listScroll(boxDom){
+    var limitL = document.getElementById("announcementList").childNodes.length;
+    limit = '{"l":"' + limitL + '","r":"' + (limitL + 10) + '"}';
+    // alert(limit)
+    var scrollTop = boxDom.scrollTop - 2;
+    var max = boxDom.scrollHeight - boxDom.offsetHeight;
+    if (scrollTop >= max) {
+      $.post("./index.php?c=AdminMain&a=getSendNotices",{"limit": limit}, function(data) {
+        eval("data =" + data);
+        if (data.length>0) {
+          for (var i = 0; i < 10; i++) {
+            createList(data[i]['title'], data[i]['time'], data[i]['id']);
+          }
+        }
+        else{
+          createList("没有更多的公告了", "", "");
+          $("#listContainer").unbind('scroll')
+        }
+      });
+    }
+}

@@ -9,17 +9,17 @@ body{
     height: 1701px;
     font-size: 62.5%;
     font-family: Microsoft Yahei;
-    color: rgba(170,170,170,1);
+    color: rgba(153,153,153,1);
     overflow-y: auto;
     overflow-x: auto;
     margin: 0 0 4px 0;
-    background: rgba(139, 228, 232,1);
+    background: rgba(136, 216,247,1);
 }
 .container {
   width:95%;
   margin: 0 auto;
 }
-.today , .three , .week {
+.today , .three , .earlier {
   width: 100%;
   margin: 30px auto;
   padding: 25px 0;
@@ -28,17 +28,29 @@ body{
 .period{
   margin-left: 2.5%;
 }
+.unread{
+  position: absolute;
+  left: 0px;
+}
 .dynamicList{
   width: 95%;
   height: 200px;
-  margin: 10px auto;
-  list-style: none;
+  margin: 20px auto;
   position: relative;
   background: rgba(188,233,251,1);
-  box-shadow:6px 6px 8px rgba(181,181,181,1);
+  box-shadow:6px 6px 8px rgba(181,181,181,1) ;
 }
 .dynamicList:active{
   box-shadow:none;
+}
+.dynamicText{
+  list-style: none;
+  display: none;
+  font-size: 30px;
+  margin: 0 0 30px;
+  padding: 10px 50px;
+  color: rgba(10,10,10,1);
+  height: 400px;
 }
 .dynamicImg{
   width: 17%;
@@ -52,11 +64,11 @@ body{
   margin: 40px 0 0 15px;
 }
 .title{
-  font-size: 3em;
+  font-size: 50px;
   color: rgba( 0, 0, 0,1);
 }
 .text{
-  font-size: 2em;
+  font-size: 30px;
   margin-top: 10px;
   color: rgba(52,52,52,1);
 }
@@ -66,21 +78,22 @@ body{
   color: rgba(52,52,52,1);
 }
 .time{
-  font-size: 3em;
+  font-size: 30px;
   position: relative;
-  right: -30px;
+  right: -45px;
   top: 10px;
 }
 .sender{
-  font-size: 2em;
+  font-size: 30px;
   position: relative;
   right: 5px;
-  bottom: -110px;
+  bottom: -95px;
 
 }
 hr{
 width: 80%;
 margin: 0 auto;
+color: rgba(181,181,181,1);
 }
 
 footer {
@@ -117,23 +130,3 @@ footer {
   background-color: inherit;
 }
 
-.inImg {
-  width: 158px;
-  height: 158px;
-}
-.accountImg{
-  width:75px;
-  float: right;
-  margin: 50px 30px 0 0;
-}
-.functionImg{
-  width:75px;
-  float: right;
-  margin: 70px 30px 0 0;
-}
-.clearImg{
-  height:50px;
-  float: right;
-  margin-top: 55px;
-  margin-right: 30px;
-}

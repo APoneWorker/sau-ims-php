@@ -30,7 +30,7 @@ main {
   background-color: rgba(255, 255, 255, 0.5);
 }
 .settled{
-  width: 80%;
+  width: 90%;
   margin: 115px auto;
 }
 .inImg {
@@ -38,20 +38,21 @@ main {
   height: 158px;
 }
 .accountImg{
-  width:75px;
+  width:50px;
   float: right;
   margin: 50px 30px 0 0;
 }
 .functionImg{
-  width:75px;
+  width:50px;
   float: right;
   margin: 70px 30px 0 0;
 }
 .clearImg{
-  height:50px;
+  height:45px;
   float: right;
   margin-top: 55px;
-  margin-right: 30px;
+  margin-right: 20px;
+  display: none;
 }
 .lo_txt input {
   height: 158px;
@@ -82,12 +83,14 @@ main {
 }
 
 [type="button"]:active{
+  color: #fff;
   background-color: rgba(0,113,48,1);
 }
 
 .row{
   top: 30px;
 }
+
 
 .forget{
   float: left;

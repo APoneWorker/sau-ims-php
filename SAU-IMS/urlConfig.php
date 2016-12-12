@@ -36,7 +36,14 @@ require_once "../framework/Email.php";//邮件类
 require_once "../framework/ModelFactory.php";//模型工厂类
 require_once "../framework/PHPMailer/PHPMailerAutoload.php";//邮件实现自动加载类
 
+
 //***************************站点的绝对路径**********************//
 
 define("AB_HOST",$_SERVER['DOCUMENT_ROOT']."/".HOST_NAME."/");
+
+//***************************各文件夹路径***********************//
+
+define("PORTRAIT_PATH","../userImg/portrait/");//用户头像路径
+define("YEAR_CHECK_PATH","../yearCheck/");//年度审核报告路径
+define("YEAR_CHECK_HTML_PATH","../yearCheck/tempHtml/");//年度审核临时html路径
 

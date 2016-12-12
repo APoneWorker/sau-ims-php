@@ -3,11 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>校社联主页</title>
+  <script src="./view/user/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./view/user/js/functionsBase.js"></script>
+    <script type="text/javascript" src="./view/user/js/functionsOption.js"></script>
+    <script type="text/javascript" src="./view/user/js/functions.js"></script>
+    <script type="text/javascript" src="./view/user/js/index.js"></script>
   <link rel="stylesheet" style="text/css" href="./view/user/css/index.css">
 </head>
 <body>
-  <div class="container">
-    <div class="today">
+<div class="container">
+    <div class="today" id="today">
+      <h1 class="period" >今天</h1>
+    </div>
+    <div class="three" id="three">
+      <h1 class="period">近三天</h1>
+    </div>
+    <div class="earlier" id="earlier">
+      <h1 class="period">更早</h1>
+    </div>
+  </div>
+  <!-- <div class="container">
+    <div class="today" >
       <h1 class="period">今天</h1>
       <li class="dynamicList">
       <img src="./view/user/img/动态公告logo.png" class="dynamicImg" >
@@ -45,14 +61,14 @@
       <hr/>
       <li class="dynamicList"></li>
     </div>
-  </div>
+  </div> -->
   <footer>
     <div class="option">
       <img src="./view/user/img/动态logo.png" class="blo">
       <p class="des">动态</p>
       <div class="token"></div>
     </div>
-     <div class="option">
+     <div class="option" id="notice">
        <img src="./view/user/img/公告logo.png" class="blo">
        <p class="des">公告</p>
        <div class="untoken"></div>
@@ -71,7 +87,7 @@
        <img src="./view/user/img/更多logo.png" class="blo">
        <p class="des">更多</p>
        <div class="untoken"></div>
-     </div> 
+     </div>
   </footer>
 </body>
 </html>

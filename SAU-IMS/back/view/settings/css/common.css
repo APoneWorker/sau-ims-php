@@ -40,6 +40,10 @@ html{
 a {
 	text-decoration: none;
 }
+
+input {
+	font-family: Microsoft Yahei;
+}
 /*页眉部分*/
 
 header{
@@ -78,6 +82,8 @@ header{
 .userImg {
 	top: 15px;
 	right: 160px;
+	width: 56px;
+	height: 56px;
 	border-radius: 30px;
 }
 
@@ -230,6 +236,9 @@ footer{
 
 .headImg {
 	top: 25px;
+	width: 56px;
+	height: 56px;
+	border-radius: 30px;
 }
 
 [type="file"] {
@@ -276,7 +285,7 @@ li {
 	font-size: 2em;
 }
 
-[type="button"] {
+[type="submit"] {
 	top: 20px;
 	width: 300px;
 	height: 50px;
@@ -288,11 +297,11 @@ li {
 	font-family: Microsoft Yahei;
 }
 
-[type="button"]:hover{
+[type="submit"]:hover{
 	background-color: rgba(0,113,48,1);
 }
 
-[type="button"]:active{
+[type="submit"]:active{
 	color: rgba(102,102,102,1);
 	background-color: #fff;
 }

@@ -13,6 +13,8 @@ class SauAdmin extends BaseUser
 {
 	/*公告管理对象，用来调用与公告相关的函数*/
 	private $noticeManage;
+  	/*任务管理对象，用来调用与任务相关的函数*/
+  	private $taskManage;
 	public function __construct($userName = ""){
 		parent::__construct($userName);
 		$userinfo = array(
@@ -21,10 +23,14 @@ class SauAdmin extends BaseUser
 			'userName'=>$this->getUserName(),
 			'sauId'=>$this->getSauId()
 		);
-		
+
 		$this->noticeManage = new SauNotice($userinfo);
+		$this->taskManage = new SauTask($userinfo);
 	}
 	public function getNoticeManage(){
 		return $this->noticeManage;
+	}
+	public function getTaskManage(){
+    	return $this->taskManage;
 	}
 }

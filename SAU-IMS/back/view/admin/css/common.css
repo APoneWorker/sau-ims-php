@@ -70,6 +70,8 @@ header {
 	top: 15px;
 	right: 180px;
 	float: right;
+	width: 56px;
+	height: 56px;
 	border-radius: 30px;
 }
 .userImg:hover {
@@ -385,7 +387,8 @@ input[type="checkbox"] {
 	width: 100%;
 	border: solid 2px rgba(153, 153, 153, 1);
 	border-radius: 10px;
-	background-color: inherit;
+  background: none;
+  outline: none;
 	font-size: 2em;
 	margin-bottom: 15px;
 	padding-left: 10px;
@@ -395,16 +398,16 @@ input[type="checkbox"] {
 .newText{
 	resize: none;
 	width: 100%;
-	height: 480px;
+	height: 430px;
 	border: solid 2px rgba(153, 153, 153, 1);
 	border-radius: 10px;
 	background-color: inherit;
 	font-size: 2em;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 10px;
 	margin-left: -10px;
 	overflow: auto;
 	white-space: pre-wrap; /* 自动换行操作 */
+  outline: none;
 }
 .submit{
 	width: 200px;
@@ -420,6 +423,7 @@ input[type="checkbox"] {
   text-align: center;
   line-height: 50px;
   margin-right: -15px;
+  outline: none;
 }
 
 .submit:hover{

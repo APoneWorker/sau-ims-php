@@ -42,26 +42,71 @@ $(function() {
 
   // 清除对应输入框的内容
   $("#clearName").click(function() {
-    $("#loUsername").val("");
-  });
+    $("#user").val("");
+    $("#clearName").css({
+      "display": "none"
+    })
+  })
   $("#clearPwd").click(function() {
-    $("#loPwd").val("");
-  });
+    $("#password").val("");
+    $("#clearPwd").css({
+        "display": "none"
+      })
+  })
   $("#clearVerification").click(function() {
     $("#loVerification").val("");
+    $("#clearVerification").css({
+        "display": "none"
+      })
   });
 
   // 控制明文密码的显示与隐藏
   $("#showPwd").click(function() {
-    var pwdType = document.getElementById("loPwd").type;
+    var pwdType = document.getElementById("password").type;
     if (pwdType == "password") {
-      document.getElementById("loPwd").type = "text";
-      document.getElementById("showPwd").src = "./view/login/img/睁眼logo.png";
+      document.getElementById("password").type = "text";
+      document.getElementById("showPwd").src = "/view/login/img/睁眼logo.png";
     } else {
-      document.getElementById("loPwd").type = "password";
-      document.getElementById("showPwd").src = "./view/login/img/闭眼logo.png";
+      document.getElementById("password").type = "password";
+      document.getElementById("showPwd").src = "/view/login/img/闭眼logo.png";
     }
   });
+
+  // 控制清除图标的显示与隐藏
+  $('#user').bind('input propertychange', function() {
+    if ($('#user').val() != "") {
+      $("#clearName").css({
+        "display": "block"
+      })
+    } else {
+      $("#clearName").css({
+        "display": "none"
+      })
+    }
+  });
+  $('#password').bind('input propertychange', function() {
+    if ($('#password').val() != "") {
+      $("#clearPwd").css({
+        "display": "block"
+      })
+    } else {
+      $("#clearPwd").css({
+        "display": "none"
+      })
+    }
+  });
+  $('#loVerification').bind('input propertychange', function() {
+    if ($('#loVerification').val() != "") {
+      $("#clearVerification").css({
+        "display": "block"
+      })
+    } else {
+      $("#clearVerification").css({
+        "display": "none"
+      })
+    }
+  });
+
 
   // 点击更换验证码
   $("#changeVerification").click(function(){
